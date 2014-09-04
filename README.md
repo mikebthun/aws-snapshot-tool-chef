@@ -82,7 +82,7 @@ Ubuntu 12.04
     <td><tt>[:aws_snapshot_tool][:keep_year]</tt></td>
     <td>Integer</td>
     <td>Number of yearly snapshots to keep</td>
-    <td><tt>11/tt></td>
+    <td><tt>11</tt></td>
   </tr>
 
 
