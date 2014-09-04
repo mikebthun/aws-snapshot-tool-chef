@@ -1,0 +1,34 @@
+
+config = {
+
+    # AWS credentials for the IAM user (alternatively can be set up as environment variables)
+    'aws_access_key': '<%= node[:aws_snapshot_tool][:aws_access_key] %>',
+    'aws_secret_key': '<%= node[:aws_snapshot_tool][:aws_secret_key] %>',
+
+    # EC2 info about your server's region
+    'ec2_region_name': '<%= node[:aws_snapshot_tool][:ec2_region_name] %>',
+    'ec2_region_endpoint': '<%= node[:aws_snapshot_tool][:ec2_region_endpoint] %>',
+
+    # Tag of the EBS volume you want to take the snapshots of
+    'tag_name': 'tag:<%= node[:aws_snapshot_tool][:tag_name] %>',
+    'tag_value': 'True',
+
+    # Number of snapshots to keep (the older ones are going to be deleted,
+    # since they cost money).
+    'keep_day': <%= node[:aws_snapshot_tool][:keep_day] %>,
+    'keep_week': <%= node[:aws_snapshot_tool][:keep_week] %>,
+    'keep_month': <%= node[:aws_snapshot_tool][:keep_month] %>,
+
+    # Path to the log for this script
+    'log_file': '<%= node[:aws_snapshot_tool][:log_file_path] %>',
+ 
+    
+    <% if node[:aws_snapshot_tool][:sns_arn].length > 1 %>
+    # ARN of the SNS topic (optional)
+    'arn': '<%= node[:aws_snapshot_tool][:sns_arn] %>',
+    <% end %>
+
+    # Proxy config (optional)
+    #'proxyHost': '10.100.x.y',
+    #'proxyPort': '8080'
+}
